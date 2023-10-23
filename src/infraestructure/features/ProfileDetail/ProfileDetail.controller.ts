@@ -14,5 +14,27 @@ export const useProfileDetail = () => {
   const handleSendWhatsApp = () =>
     Linking.openURL(`https://wa.me/${user?.phone}`);
 
-  return { user, handleCallByPhone, handleSendEmail, handleSendWhatsApp };
+  const formatDate = (date: string) => {
+    const dateToFormat = new Date(date);
+
+    return dateToFormat.toLocaleDateString("en-US");
+  };
+
+  const translateGender = (gender: string) => {
+    const possibleGenders: Record<string, string> = {
+      FEMALE: "Femenino",
+      MALE: "Masculino",
+    };
+
+    return possibleGenders[gender];
+  };
+
+  return {
+    user,
+    handleCallByPhone,
+    handleSendEmail,
+    handleSendWhatsApp,
+    formatDate,
+    translateGender,
+  };
 };

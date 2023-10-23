@@ -11,11 +11,16 @@ import {
 import { getHP, getWP } from "../../utils/dimensions";
 import { UserInfoItem } from "./components/UserInfoItem";
 import { ActionButton } from "../../components";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const ProfileDetail = () => {
-  const { user, handleCallByPhone, handleSendEmail, handleSendWhatsApp } =
-    useProfileDetail();
+  const {
+    user,
+    handleCallByPhone,
+    handleSendEmail,
+    handleSendWhatsApp,
+    formatDate,
+    translateGender,
+  } = useProfileDetail();
 
   return (
     <View style={styles.container}>
@@ -45,7 +50,7 @@ const ProfileDetail = () => {
           <UserInfoItem
             icon={<FontAwesome name="birthday-cake" size={20} color={"#000"} />}
             label="Fecha de nacimiento"
-            description={user?.birthDate}
+            description={formatDate(user.birthDate)}
           />
           <UserInfoItem
             icon={
@@ -55,12 +60,12 @@ const ProfileDetail = () => {
                 color={"#000"}
               />
             }
-            label="Genero"
-            description={user?.gender}
+            label="Género"
+            description={translateGender(user.gender)}
           />
           <UserInfoItem
             icon={<MaterialIcons name="work" size={20} color={"#000"} />}
-            label="Profesion"
+            label="Profesión"
             description={user?.profesion}
             lastItem
           />
@@ -80,7 +85,7 @@ export default ProfileDetail;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF'
+    backgroundColor: "#FFF",
   },
   infoAndActionsContainer: {
     marginTop: getHP(10),
@@ -107,17 +112,17 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     marginBottom: getHP(3),
-    paddingHorizontal: getWP(5)
+    paddingHorizontal: getWP(5),
   },
   button: {
-    backgroundColor: '#F66262',
+    backgroundColor: "#F66262",
     height: getHP(6),
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: 50,
   },
   buttonLabel: {
-    color: '#FFF',
-    fontWeight: '500'
-  }
+    color: "#FFF",
+    fontWeight: "500",
+  },
 });
