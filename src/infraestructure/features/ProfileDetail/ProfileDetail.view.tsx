@@ -66,7 +66,7 @@ const ProfileDetail = () => {
           />
         </View>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={() => AsyncStorage.clear()} style={styles.button}>
+          <TouchableOpacity onPress={() => {}} style={styles.button}>
             <Text style={styles.buttonLabel}>Eliminar de mi lista</Text>
           </TouchableOpacity>
         </View>
